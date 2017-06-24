@@ -3,48 +3,52 @@ package main
 import (
 	"bufio"
 	"encoding/xml"
-	"fmt"
 	"log"
 	"os"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
-type Data struct {
-	word  string `xml:"word"`
-	trans string `xml:"trans"`
+type Pdic struct {
+	Records []Record `xml:"record"`
 }
 
 type Record struct {
-	Data []Data
+	Word  string `xml:"word"`
+	Trans string `xml:"trans"`
 }
 
-func Load() []string {
-	f, err := os.Open(`./EIJI-141.xml`)
+func Load() []byte {
+	f, err := os.Open(`./test.xml`)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 	defer f.Close()
 
-	lines := make([]string, 0, 8664751)
+	fstat, err := f.Stat()
+	if err != nil {
+		log.Fatal(err)
+	}
+	lines := make([]byte, 0, fstat.Size())
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+		lines = append(lines, []byte(scanner.Text())...)
 	}
 	if serr := scanner.Err(); serr != nil {
 		log.Fatal(err)
 	}
-
 	return lines
 }
 
-func Parse() {
-	var dict Directory
-	err := xml.Unmarshal([]byte(Load()), &dict)
-	if err != nil {
+func Parse() *Pdic {
+	var pdic Pdic
+	lines := Load()
+	if err := xml.Unmarshal(lines, &pdic); err != nil {
 		log.Fatal(err)
 	}
+	return &pdic
 }
 
 func main() {
-	l := Load()
-	fmt.Println(l)
+	Parse()
 }

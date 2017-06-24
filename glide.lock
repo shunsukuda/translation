@@ -1,0 +1,10 @@
+hash: 1ede85c1587f3846a33cb0dacf75bcd843513abe2932566dda678147f20c54b8
+updated: 2017-06-09T13:57:04.9667684+09:00
+imports:
+- name: github.com/mattn/go-sqlite3
+  version: ca5e3819723d8eeaf170ad510e7da1d6d2e94a08
+- name: golang.org/x/net
+  version: 59a0b19b5533c7977ddeb86b017bf507ed407b12
+  subpackages:
+  - context
+testImports: []
