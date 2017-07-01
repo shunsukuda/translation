@@ -1,10 +1,37 @@
-hash: 1ede85c1587f3846a33cb0dacf75bcd843513abe2932566dda678147f20c54b8
-updated: 2017-06-09T13:57:04.9667684+09:00
+hash: 5f4c32e9e8e1661870a3c8d4d125c0a9b9f1f4dbe13f2b9d5d2166465bb64e3d
+updated: 2017-07-01T21:59:54.0777853+09:00
 imports:
+- name: github.com/mattn/go-colorable
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
+  repo: https://github.com/mattn/go-colorable
+- name: github.com/mattn/go-isatty
+  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  repo: https://github.com/mattn/go-isatty
 - name: github.com/mattn/go-sqlite3
   version: ca5e3819723d8eeaf170ad510e7da1d6d2e94a08
 - name: golang.org/x/net
   version: 59a0b19b5533c7977ddeb86b017bf507ed407b12
   subpackages:
   - context
+- name: golang.org/x/sys
+  version: e24f485414aeafb646f6fca458b0bf869c0880a1
+  repo: https://go.googlesource.com/sys
+  subpackages:
+  - unix
+- name: gopkg.in/cheggaaa/pb.v1
+  version: 4a1bf7a97d1348c5b50aabf6e1eb0496ca0a3d33
+- name: gopkg.in/cheggaaa/pb.v2
+  version: 4a1bf7a97d1348c5b50aabf6e1eb0496ca0a3d33
+  subpackages:
+  - termutil
+- name: gopkg.in/fatih/color.v1
+  version: 570b54cabe6b8eb0bc2dfce68d964677d63b5260
+- name: gopkg.in/mattn/go-colorable.v0
+  version: 941b50ebc6efddf4c41c8e4537a5f68a4e686b24
+- name: gopkg.in/mattn/go-isatty.v0
+  version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
+- name: gopkg.in/mattn/go-runewidth.v0
+  version: 9e777a8366cce605130a531d2cd6363d07ad7317
+- name: gopkg.in/VividCortex/ewma.v1
+  version: 2f8aa9741ab4b5b80945c750b871131b88ef5b7f
 testImports: []

@@ -2,3 +2,5 @@ package: github.com/shunsukuda/translation
 import:
 - package: github.com/mattn/go-sqlite3
   version: ~1.2.0
+- package: gopkg.in/cheggaaa/pb.v1
+  version: ^2.0.4
