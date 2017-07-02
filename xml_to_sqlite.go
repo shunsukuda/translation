@@ -19,8 +19,8 @@ type Record struct {
 	Trans string `xml:"trans"`
 }
 
-func Load() []byte {
-	f, err := os.Open(`./EIJI-141.xml`)
+func Load(xmlfile string) []byte { // {{{
+	f, err := os.Open(xmlfile)
 	if err != nil {
 		panic(err)
 	}
@@ -39,19 +39,18 @@ func Load() []byte {
 		panic(err)
 	}
 	return lines
-}
+} // }}}
 
-func Parse() *Pdic {
+func Parse(xmlfile string) *Pdic { // {{{
 	var pdic Pdic
-	lines := Load()
+	lines := Load(xmlfile)
 	if err := xml.Unmarshal(lines, &pdic); err != nil {
 		panic(err)
 	}
 	return &pdic
-}
+} // }}}
 
-func CreateDB() {
-	dbfile := "./eiji-141.db"
+func CreateDB(xmlfile string, dbfile string) { // {{{
 	if _, err := os.Stat(dbfile); err == nil {
 		os.Remove(dbfile)
 	}
@@ -67,7 +66,7 @@ func CreateDB() {
 	if err != nil {
 		panic(err)
 	}
-	records := Parse().Records
+	records := Parse(xmlfile).Records
 	pbar := pb.StartNew(len(records))
 	for _, e := range records {
 		if _, err = stmt.Exec(e.Word, e.Trans); err != nil {
@@ -80,8 +79,10 @@ func CreateDB() {
 		stmt.Close()
 		db.Close()
 	}()
-}
+} // }}}
 
 func main() {
-	CreateDB()
+	xmlfile := `./EIJI-141.xml`
+	dbfile := `./eiji-141.db`
+	CreateDB(xmlfile, dbfile)
 }

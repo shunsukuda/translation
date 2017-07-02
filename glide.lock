@@ -1,6 +1,8 @@
-hash: 5f4c32e9e8e1661870a3c8d4d125c0a9b9f1f4dbe13f2b9d5d2166465bb64e3d
-updated: 2017-07-01T21:59:54.0777853+09:00
+hash: 0cb9d9c3bfe4bb22f846d7885199aabc05df6e010e8d1c9505012ae227a5d0e7
+updated: 2017-07-02T11:59:42.3507805+09:00
 imports:
+- name: github.com/labstack/echo
+  version: 935a60782cbbc55110e7bd4b33120e4567cbee43
 - name: github.com/mattn/go-colorable
   version: 5411d3eea5978e6cdc258b30de592b60df6aba96
   repo: https://github.com/mattn/go-colorable
